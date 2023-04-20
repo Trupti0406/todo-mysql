@@ -21,6 +21,11 @@ code {
   padding: 1rem 9rem;
 }
 
+li {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
 @media only screen and (max-width: 600px) {
   .output-list {
     padding: 1rem 0rem;

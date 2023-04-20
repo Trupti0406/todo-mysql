@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 const defaultinput = { todo_name: "" };
 function ToDoApp() {
@@ -62,37 +62,56 @@ function ToDoApp() {
 
   return (
     <>
-      <div>
-        <h1 style={{ textAlign: "center" }}>TO-DO List</h1>
-      </div>
+      <h1 className="text-center mt-3 mt-md-5">TODO List App</h1>
 
       {/* Input Area Code */}
-      <div className="todo-body">
-        <form onSubmit={handleSubmit}>
-          <span className="span-box">Enter The Task</span>
-          <input
-            className="input-style"
-            type="text"
-            placeholder="Add item here!"
-            required
-            value={todoName.todo_name}
-            onChange={(e) =>
-              setTodoName({ ...todoName, todo_name: e.target.value })
-            }
-          />
-          <input className="btn-1" type="submit" value="Add" />
-        </form>
-      </div>
+      <form onSubmit={handleSubmit} className="p-5">
+        {/* Input */}
+        <div className="mb-3">
+          <div className="input__group input-group">
+            <span className="bg-info p-3 fw-semibold" id="basic-addon3">
+              Enter The Task:
+            </span>
+            <input
+              type="text"
+              className="form-control p-3 fw-semibold"
+              id="title"
+              aria-describedby="basic-addon3 basic-addon4"
+              placeholder="Go to the library"
+              required
+              value={todoName.todo_name}
+              onChange={(e) =>
+                setTodoName({ ...todoName, todo_name: e.target.value })
+              }
+            />
+            <span>
+              <button
+                type="submit"
+                className="btn btn-success p-3 ms-2 rounded fw-semibold"
+              >
+                Add Task
+              </button>
+            </span>
+          </div>
+        </div>
+      </form>
 
       {/* Output Area Code */}
       <div>
-        <ul className="todoNames">
-          {toDoList.map((to_do_list) => {
+        <ul className="output-list list-group mt-5 w-md-75">
+          {toDoList.map((tasks) => {
             return (
-              <li className="singleName" key={to_do_list.todo_id}>
-                <span style={{ flex: "1" }}>{to_do_list.todo_name}</span>
-                <button onClick={() => handleDelete(to_do_list.todo_id)}>
-                  <i className="fa-solid fa-x"></i>
+              <li
+                className="list-group-item mb-3 py-3 rounded fw-bold bg-light d-flex space-between"
+                key={tasks.todo_id}
+              >
+                <p>{tasks.todo_name}</p>
+                <button
+                  onClick={() => handleDelete(tasks.todo_id)}
+                  className="btn btn-danger
+                "
+                >
+                  <i class="fa-solid fa-trash"></i>
                 </button>
               </li>
             );
