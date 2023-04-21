@@ -2,7 +2,6 @@
 
 ## Working video of this application: [Click Here](https://drive.google.com/file/d/1k2eRw5i5JjfxuUrvxFl5Ak92iW6DNBhc/view?usp=share_link).
 
-<hr>
 
 ## Features of this app:
 
