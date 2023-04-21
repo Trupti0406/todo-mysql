@@ -11,8 +11,6 @@
 - The database/ storage method used in the app is MySQL Database using **MySQL XAMPP server via phpMyAdmin**.
 - User can **delete a particular task** by clicking on the delete/trash Icon next to every task in the todolist. Accordingly our database will also get updated.
 
-<hr>
-
 ## How to run this project on your local system?
 
 1. Go to the **"frontend"** folder, open the frontend folder in an integrated terminal and run command **`npm install`** to install all the dependencies.'

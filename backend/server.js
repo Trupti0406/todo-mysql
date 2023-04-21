@@ -23,8 +23,7 @@ connection.connect((err) => {
 
     // Making POST request to server Database
     app.post("/db", (req, res) => {
-      const { todo_name } = req.body;
-
+      const { todo_name } = req.body; //use the same name used in backend i.e. in your mysql database table
       //todo_id is set as AUTO_INCREMENT PRIMARY KEY in MySQL Database.
       //So that ID will keep on incrementing.
       const sql = `INSERT INTO todolist_table (todo_name) VALUES (?)`; //my table name is "todolist_name"
