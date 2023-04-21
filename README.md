@@ -9,7 +9,7 @@
 - User can **add a task** in the given form.
 - Once the user adds the tasks, all of them will be appended one below another in a form of unordered list.
 - The database/ storage method used in the app is MySQL Database using **MySQL XAMPP server via phpMyAdmin**.
--
+- User can **delete a particular task** by clicking on the delete/trash Icon next to every task in the todolist. Accordingly our database will also get updated.
 
 <hr>
 
@@ -27,19 +27,18 @@
    - Table should have two colums with name **todo_id** and **todo_name**.
 5. And run **`node server.js`** in the same terminal.
 
+<br>
+
 Here's the code for creating the above database to run the app:
 
 - First run this command to create a database:
   **`CREATE DATABASE todolist_database`**
 - Then create table and columns with following commands:
 
-  ```CREATE TABLE todolist_table(
-
+```
+  CREATE TABLE todolist_table(
   todo_id INT NOT NULL AUTO_INCREMENT,
-
   todo_name VARCHAR(255) NOT NULL,
-
   PRIMARY KEY(todo_id)
-
   )
-  ```
+```
