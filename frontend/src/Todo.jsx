@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from "react";
 
-const defaultinput = { todo_name: "" };
+const defaultField = { todo_name: "" };
 function ToDoApp() {
-  const [todoName, setTodoName] = useState(defaultinput);
+  const [todoName, setTodoName] = useState(defaultField);
   const [toDoList, setTodoList] = useState([]);
 
-  //To handle the POST Request to the server when form are submitted.
+  // This function will send a POST request to the server when task is added.
   const handleSubmit = async (e) => {
     const { todo_name } = todoName;
-
     e.preventDefault();
     try {
       await fetch("http://localhost:3200/db", {
         method: "POST",
-
         headers: { "Content-Type": "application/json" },
-
         body: JSON.stringify({ todo_name }),
       }).then((response) => {
         response.json();
-        fetchAllTodo();
+        fetchAllTodo(); //fetching all todo items
       });
     } catch (err) {
       console.error(err.message);
     }
-    setTodoName(defaultinput);
+    setTodoName(defaultField); //resetting the input to blank
   };
 
-  // GET request to the server to retrive all TODO datas using "fetch API" inside "fetchAllTodos"
+  // This get request will retrive all the todolist items using fetch API
   const fetchAllTodo = () => {
     fetch("http://localhost:3200/db/get", {
       method: "GET",
@@ -38,22 +35,20 @@ function ToDoApp() {
       .then((data) => setTodoList(data.data))
       .catch((error) => console.log(error));
   };
-  //calling the "fetchAllTodos" function inside useEffect hooks to see realtime changes on UI
   useEffect(() => {
     fetchAllTodo();
   }, []);
 
-  //Making Delete Request to Server to delete the specific task.
+  //This DELETE request will be responsible for deleting a particular todolist item with the help of its id
   const handleDelete = (id) => {
     try {
       fetch(`http://localhost:3200/db/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       }).then((response) => response.json());
-      // update the to-do list state by removing the deleted item
+      // To update the todolist state after we've deleted a todolist item
       setTodoList(toDoList.filter((data) => data.data !== id));
-
-      // After deletion we again call the fetchAllTodo function to see the updated TODO lists
+      // displaying rest of the tasks
       fetchAllTodo();
     } catch (error) {
       console.log(error);
@@ -111,7 +106,7 @@ function ToDoApp() {
                   className="btn btn-danger
                 "
                 >
-                  <i class="fa-solid fa-trash"></i>
+                  <i className="fa-solid fa-trash"></i>
                 </button>
               </li>
             );
